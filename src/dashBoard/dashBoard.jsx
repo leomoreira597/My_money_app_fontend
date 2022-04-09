@@ -3,20 +3,22 @@ import ContentHeader from "../common/template/contentHeader";
 import Content from "../common/template/content";
 import ValueBox from "../common/widget/valueBox";
 import Row from "../common/layout/row";
+import {connect} from "react-redux";
 
 class DashBoard extends Component{
     render(){
+        const {credit, debt} = this.props.summary
         return(
             <div>
                 <ContentHeader title="DashBoard" small="Versão 1.0"/>
                 <Content>
                     <Row>
                         <ValueBox cols="12 4" color="green" icon="bank"
-                            value="R$ 10,00" text="Total de créditos"/>
+                            value={`R$ ${credit}`} text="Total de créditos"/>
                         <ValueBox cols="12 4" color="red" icon="credit-card"
-                            value="R$ 10,00" text="Total de débtos"/>
+                            value={`R$ ${debt}`} text="Total de débtos"/>
                         <ValueBox cols="12 4" color="blue" icon="money"
-                            value="R$ 0" text="Valor Consolidado"/>    
+                            value={`R$ ${credit - debt}`} text="Valor Consolidado"/>    
                     </Row>
                 </Content>
             </div>
@@ -24,4 +26,10 @@ class DashBoard extends Component{
     }
 }
 
-export default DashBoard
+function mapStateToProps(state){
+    return({
+        summary: state.dashBoard.summary
+    });
+}
+
+export default connect(mapStateToProps) (DashBoard)
