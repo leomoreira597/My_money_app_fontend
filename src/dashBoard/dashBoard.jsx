@@ -4,8 +4,15 @@ import Content from "../common/template/content";
 import ValueBox from "../common/widget/valueBox";
 import Row from "../common/layout/row";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {getSummary} from "./dashBoardActions"
 
 class DashBoard extends Component{
+
+    componentWillMount(){
+        this.props.getSummary()
+    }
+
     render(){
         const {credit, debt} = this.props.summary
         return(
@@ -32,4 +39,10 @@ function mapStateToProps(state){
     });
 }
 
-export default connect(mapStateToProps) (DashBoard)
+function mapDispatchToProps(dispatch){
+    return(
+        bindActionCreators({getSummary}, dispatch)
+    );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (DashBoard)
