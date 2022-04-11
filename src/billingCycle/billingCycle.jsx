@@ -1,15 +1,27 @@
 import React, {Component} from "react";
 import ContentHeader from "../common/template/contentHeader";
 import Content from "../common/template/content";
+import Tabs from "../common/tab/tabs";
+import TabsHeader from "../common/tab/tabsHeader";
+import TabsContent from "../common/tab/tabsContent";
 
 class BillingCycle extends Component{
     render(){
-        <div>
-            <ContentHeader title="Ciclo de Pagamentos" small="Cadastro"/>
-            <Content>
-                Ciclos de pagamentos
-            </Content>
-        </div>
+        return(
+            <div>
+                <ContentHeader title="Ciclo de Pagamentos" small="Cadastro"/>
+                <Content>
+                    <Tabs>
+                        <TabsHeader>
+
+                        </TabsHeader>
+                        <TabsContent>
+
+                        </TabsContent>
+                    </Tabs>
+                </Content>
+            </div>
+        );
     }
 }
 
