@@ -9,6 +9,7 @@ import TabContent from "../common/tab/tabContent";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux"
 import {selectTab, showTabs} from "../common/tab/tabActions"
+import BillingCycleList from "./billingCycleList";
 
 class BillingCycle extends Component{
 
@@ -31,7 +32,7 @@ class BillingCycle extends Component{
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id="tabList">
-                                <h1>Lista</h1>
+                                <BillingCycleList/>
                             </TabContent>
                             <TabContent id="tabCreate">
                                 <h1>Inclusão</h1>
