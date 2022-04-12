@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 export default class Grid extends Component{
 
-    toCssClasses(numbers){
+    toCssClasses(numbers) {
         const cols = numbers ? numbers.split(' ') : []
         let classes = ''
 
@@ -15,7 +15,7 @@ export default class Grid extends Component{
     }
 
     render(){
-        const gridClasses = this.toCssClasses(this.props.cols || 12)
+        const gridClasses = this.toCssClasses(this.props.cols || '12')
         return(
             <div className={gridClasses}>
                 {this.props.children}
@@ -23,3 +23,4 @@ export default class Grid extends Component{
         );
     }
 }
+
