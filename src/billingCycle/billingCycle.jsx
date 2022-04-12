@@ -11,7 +11,7 @@ import {connect} from "react-redux"
 import {selectTab, showTabs} from "../common/tab/tabActions"
 import BillingCycleList from "./billingCycleList";
 import Form from "./billingCycleFrom";
-import {create, update} from "./billingCyclesActions"
+import {create, update, deleteData} from "./billingCyclesActions"
 
 class BillingCycle extends Component{
 
@@ -46,7 +46,7 @@ class BillingCycle extends Component{
                             </TabContent>
 
                             <TabContent id="tabDelete">
-                                <h1>Exclusão</h1>
+                                <Form onSubmit={this.props.deleteData} readOnly={true}/>
                             </TabContent>
                         </TabsContent>
                     </Tabs>
@@ -62,7 +62,8 @@ function mapDispatchToProps(dispatch){
             selectTab,
             showTabs,
             create,
-            update
+            update,
+            deleteData
         }, dispatch)
     );
 }

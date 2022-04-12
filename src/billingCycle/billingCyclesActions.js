@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { values } from "lodash";
 import { toastr } from "react-redux-toastr";
 import { reset as resetForm, initialize } from "redux-form";
 import { showTabs, selectTab } from "../common/tab/tabActions";
@@ -22,6 +23,10 @@ export function update(values){
     return submit(values, 'put')
 }
 
+export function deleteData(values){
+    return submit(values, 'delete')
+}
+
 function submit(values, method){
     return dispatch =>{
         const id = values._id ? values._id : ''
@@ -36,10 +41,19 @@ function submit(values, method){
     }
 }
 
+//tentar reusar esse metodo
 export function showUpdate(billingCycle){
     return[
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
+        initialize('billingCycleForm', billingCycle)
+    ]
+}
+
+export function showDelete(billingCycle){
+    return[
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
         initialize('billingCycleForm', billingCycle)
     ]
 }
